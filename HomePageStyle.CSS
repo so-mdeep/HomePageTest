@@ -109,6 +109,8 @@
                     /* 0% opacity */
                 );
             --Color-Accent: #d99d7c;
+
+            color-scheme: light;
         }
 
 
@@ -117,6 +119,10 @@
         * {
             box-sizing: border-box;
         }
+
+        img, video, svg {
+  forced-color-adjust: none; /* protect visuals */
+}
 
 
         .Background {
