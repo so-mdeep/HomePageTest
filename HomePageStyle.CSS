@@ -1,0 +1,975 @@
+ html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --fs-Section: clamp(1.25rem,
+                    1.25rem + 1.75 * (100vw - 23.4375rem) / 31.5625,
+                    3rem);
+            --fs-Button: clamp(0.75rem, 0.781vw + 0.75rem, 1.5rem);
+            --fs-Paragraph: clamp(0.75rem,
+                    /* Min: 12px (below 375px) */
+                    calc(0.75rem + 0.65 * (100vw - 23.4375rem) / 31.5625),
+                    /* Scales from 375px to 880px */
+                    1.4rem
+                    /* Max: 22.4px (above 880px) */
+                );
+            /*24px EQ*/
+            --fs-DesignHilight: clamp(0.75rem,
+                    /* Min: 12px (below 375px) */
+                    calc(0.75rem + 0.65 * (100vw - 23.4375rem) / 31.5625),
+                    /* Scales from 375px to 880px */
+                    1.4rem
+                    /* Max: 22.4px (above 880px) */
+                );
+            --fs-20pxEQ: clamp(1rem, 0.417vw + 0.75rem, 1.25rem);
+            /*20px EQ*/
+            --fs-15pxEQ: clamp(0.8rem, 0.3vw + 0.75rem, 0.9375rem);
+            /*15px EQ*/
+            --fs-15to12PX: clamp(0.75rem,
+                    /* Min: 12px (below 375px) */
+                    calc(0.75rem + 0.1875 * (100vw - 23.4375rem) / 31.5625),
+                    /* Scales from 375px to 880px */
+                    0.9375rem
+                    /* Max: 15px (above 880px) */
+                );
+            ;
+            --fs-80pxEQ: calc(var(--fs-60pxEQ)*1.3);
+            --fs-60pxEQ: calc(var(--fs-DesignHilight)*2.7);
+            --fW-Section: 700;
+            --fW-Button: 700;
+            --fW-Paragraph: 500;
+            --fw-DesignHilight: 300;
+            --gab-General: calc(var(--fs-Paragraph)*0.5);
+            /*30pxEQ*/
+            --gab-Extra: clamp(1rem, 3.611vw + 0.75rem, 4rem);
+            /*4rem*/
+            --gab-Cards: var(--fs-15pxEQ);
+            /*15px EQ*/
+            --padding30pxEQ: clamp(1.6875rem, 1.25vw + 0.75rem, 1.875rem);
+
+            --Color-white: #ffffff;
+            --sun-start-y: 100px;
+            --sun-end-y: 40vh;
+
+
+            --gradient-max: 50%;
+            --GradientSunsetWebkit: -webkit-linear-gradient(180deg,
+                    #7E8390 0%,
+                    #81878E 4.6475%,
+                    #8A8891 9.295%,
+                    #909092 13.975%,
+                    #9C9291 18.59%,
+                    #A79694 23.2375%,
+                    #B19593 27.885%,
+                    #B79990 32.5%,
+                    #C6A193 37.18%,
+                    #C49D8F 41.834%,
+                    #C3978D 46.475%,
+                    #BE9388 51.1225%,
+                    #AC8583 55.77%,
+                    #8C7982 60.385%,
+                    #79717F 65%,
+                    #79717F 100%);
+
+            --GradientSunset: linear-gradient(180deg,
+                    #7E8390 0%,
+                    #81878E 4.6475%,
+                    #8A8891 9.295%,
+                    #909092 13.975%,
+                    #9C9291 18.59%,
+                    #A79694 23.2375%,
+                    #B19593 27.885%,
+                    #B79990 32.5%,
+                    #C6A193 37.18%,
+                    #C49D8F 41.834%,
+                    #C3978D 46.475%,
+                    #BE9388 51.1225%,
+                    #AC8583 55.77%,
+                    #8C7982 60.385%,
+                    #79717F 65%,
+                    #79717F 100%);
+
+            --Color-StrokeBright: linear-gradient(to right,
+                    #ffd0ad00,
+                    #ffd0ad80,
+                    #ffeac3,
+                    #ffd0ad80,
+                    #ffd0ad00);
+            --Color-StrokeSunset: linear-gradient(to right,
+                    #d99d7c00,
+                    /* 0% opacity */
+                    #d99d7c80,
+                    /* 50% opacity */
+                    #d99d7c,
+                    /* 100% opacity (solid) */
+                    #d99d7c80,
+                    /* 50% opacity */
+                    #d99d7c00
+                    /* 0% opacity */
+                );
+            --Color-Accent: #d99d7c;
+        }
+
+
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        .Background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Only cover the visible screen height */
+            z-index: -1;
+            pointer-events: none;
+            /* Prevent it from blocking clicks */
+
+            background: var(--GradientSunsetWebkit);
+            /* For Safari fallback */
+            background: var(--GradientSunset);
+            /* For modern browsers */
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -5;
+            opacity: 1;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            /* removes default margin */
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            /* Your gradient */
+
+            /* Fix the background */
+            background-attachment: fixed;
+            /* Prevents scrolling */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            ;
+            /* Stretches gradient to full viewport */
+
+            /* Ensure full height */
+            min-height: 100vh;
+            margin: 0;
+            /* Remove default body margin */
+        }
+
+        .footer-in-view .anchor-opacity-transition {
+            opacity: 1;
+            /* Adjust this value to your preference */
+        }
+
+        .anchor-opacity-transition {
+            transition: opacity 0.5s ease;
+            opacity: 0.1;
+        }
+
+        h2 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: var(--fW-Section);
+            font-size: var(--fs-Section);
+            line-height: 1.2;
+            color: var(--Color-white);
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+        h3 {
+            font-size: var(--fs-20pxEQ);
+            font-weight: var(--fW-Section);
+        }
+
+        div {
+            display: flex;
+            /* border: 1px solid red;*/
+            padding: 0;
+            /* border: 1px solid red;*/
+        }
+
+        .Part1,
+        .Part2,
+        .Part3,
+        .Part4 {
+            width: 100%;
+            padding-left: max(16px, 5vw);
+            /* Uses 16px or 5% of viewport width, whichever is larger */
+            padding-right: max(16px, 5vw);
+            margin-left: 0;
+            margin-right: 0;
+
+        }
+
+        .z1 {
+            z-index: 1;
+        }
+
+        .Part2 {
+            margin-block-start: 50vh;
+            background: linear-gradient(90deg,
+                    rgba(246, 145, 70, 0) 0.94%,
+                    rgba(255, 208, 173, 0.502) 50%,
+                    rgba(255, 208, 173, 0) 100%)
+        }
+
+        .Part3 {
+            background: linear-gradient(90deg,
+                    rgba(126, 131, 144, 0) 0%,
+                    rgba(126, 131, 144, 0.65) 30%,
+                    rgba(126, 131, 144, 0.65) 70%,
+                    rgba(126, 131, 144, 0) 100%);
+        }
+
+        .Padded {
+            width: 100%;
+            max-width: 1064px;
+            margin: 0 auto;
+            /* Centers the container */
+            /* background-color: aqua;*/
+
+        }
+
+
+
+        .HeroContainer {
+            position: relative;
+            width: 100%;
+            justify-content: space-between;
+
+
+        }
+
+        .LogoContainer {
+            position: absolute;
+            top: -50vh;
+            width: 100%;
+            max-width: 100%;
+
+            height: 50vh;
+            z-index: -2;
+
+        }
+
+        .LogoContainer img {
+            width: 100%;
+            /* Take full width of container */
+            height: 100%;
+            /* Take full height of container */
+            object-fit: contain;
+            /* Preserves aspect ratio while fitting inside */
+        }
+
+
+
+        .HeroText {
+            /*background-color: green;*/
+            flex-direction: column;
+            flex: 1;
+            max-width: 525px;
+            /* max-width: 46ch;*/
+            justify-content: center;
+            gap: var(--gab-General);
+            /*padding-block: 5rem*/
+        }
+
+        @media (max-width: 800px) {
+
+            /* Fixed: "=" → ":" and spacing in "repeat(2, ...)" */
+            .HeroText {
+                padding-block: var(--gab-Extra);
+            }
+        }
+
+
+        .HeroText h2,
+        p {
+            margin: 0;
+            padding: 0;
+            white-space: normal;
+
+        }
+
+        .HeroText p {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: var(--fW-Paragraph);
+            font-size: var(--fs-Paragraph);
+            line-height: 1.2;
+
+            color: #453B47;
+        }
+
+
+
+
+        .ButtonContainer {
+            /*background-color: red;*/
+            width: 100%;
+            flex-direction: row;
+            gap: var(--fs-15pxEQ);
+        }
+
+        @media (max-width: 500px) {
+
+            /* Fixed: "=" → ":" and spacing in "repeat(2, ...)" */
+            .ButtonContainer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        .ButtonContainer a {
+            color: inherit;
+            /* Uses parent's text color */
+            text-decoration: none;
+            /* Removes underline */
+            font-weight: inherit;
+            /* Inherits parent's font weight */
+            font-style: inherit;
+            /* Inherits parent's font style */
+            cursor: pointer;
+        }
+
+        .Button {
+            flex: 1;
+            max-width: 152px;
+            background-color: var(--Color-white);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: var(--fW-Section);
+            font-size: var(--fs-Button);
+            line-height: 1;
+            padding: 0.375em 1.6667em;
+        }
+
+        .ButtonStroke {
+            flex: 1;
+            max-width: 152px;
+            border: 1px solid var(--Color-white);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: var(--fW-Section);
+            font-size: var(--fs-Button);
+            line-height: 1;
+            padding: 0.375em 1.6667em;
+        }
+
+        .HeroIMG {
+            flex: 1;
+            max-width: 335px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            /* Enables flex alignment */
+            align-items: flex-end;
+            /* Pushes child (image) to the bottom */
+            min-height: 100%;
+            /* Ensures container takes full height */
+        }
+
+        .ImageWrapper {
+    position: relative;
+    width: 100%;
+}
+
+        .HeroIMGfull {
+            width: 100%;
+            /*aspect-ratio: 1/1; /* Adjust to your image's aspect ratio */
+            object-fit: contain;
+            position: absolute;
+        }
+
+        .HeroIMGfullBase {
+             width: 100%;
+            /*aspect-ratio: 1/1; /* Adjust to your image's aspect ratio */
+            object-fit: contain;
+        }
+
+        .Mouth {
+            position: absolute;
+        }
+
+
+        .DesignHighlights {
+            flex-direction: column;
+            gap: var(--gab-Cards);
+            padding-block: var(--gab-Extra);
+        }
+
+        .DesignHighlightsText {
+            flex-direction: column;
+            gap: var(--gab-General);
+        }
+
+        .DesignHighlightsText h2 {
+            margin: 0;
+            padding: 0;
+            /*margin-block-start: var(--gab-Extra);*/
+        }
+
+
+        .DesignHighlightsText p {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: var(--fw-DesignHilight);
+            font-size: var(--fs-DesignHilight);
+            line-height: 1.1;
+        }
+
+        .CardsSection {}
+
+        .CardsContainer {
+            width: 100%;
+            padding-inline: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(325px, 100%/2), 1fr));
+            /* flex-direction: row;
+            flex-wrap: wrap;*/
+            gap: var(--gab-Cards);
+            /* This controls BOTH horizontal and vertical gaps */
+            justify-content: center;
+            justify-items: center;
+            /* This centers the cards horizontally */
+
+        }
+
+        @media (min-width: 740px) {
+
+            /* Fixed: "=" → ":" and spacing in "repeat(2, ...)" */
+            .CardsContainer {
+                padding-inline: 0px;
+                grid-template-columns: repeat(2, minmax(325px, 1fr));
+                /* Fixed: Removed extra ")" */
+            }
+        }
+
+        .CardsContainer a {
+            color: inherit;
+            /* Uses parent's text color */
+            text-decoration: none;
+            /* Removes underline */
+            font-weight: inherit;
+            /* Inherits parent's font weight */
+            font-style: inherit;
+            /* Inherits parent's font style */
+            cursor: pointer;
+
+        }
+
+        .Card {
+
+            flex: 1 1 500px;
+            flex-direction: column;
+            /* flex-grow, flex-shrink, flex-basis */
+            max-width: 450px;
+            border-radius: 50px;
+            overflow: hidden;
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+            background-color: #FFFFFF;
+            box-shadow: 2px 8px 8px #83777C;
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+
+            /* Add transition for smooth effect */
+            transition: outline 0.3s ease, outline-offset 0.3s ease;
+        }
+
+        @media (min-width: 800px) {
+            .Card {
+                max-width: 800px;
+            }
+        }
+
+        .Card:hover {
+            outline: 2px solid var(--Color-Accent);
+            outline-offset: -2px;
+            /* Adjust as needed */
+        }
+
+        .CardText i {
+            padding-inline: 12px;
+            color: #888;
+            /* Default color */
+            transition: all 0.3s ease;
+        }
+
+        a:hover .CardText i {
+            color: var(--Color-Accent);
+            /* Hover color */
+            transform: translateX(5px);
+        }
+
+        .CardDisplay {
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+            min-width: 164px;
+        }
+
+        .Card img {
+            width: 100%;
+            height: 196px;
+            /* Fixed height (adjust as needed) */
+            object-fit: cover;
+            /* Ensures no stretching + crops excess */
+            object-position: center;
+            /* Centers the crop area */
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+        }
+
+        @media (max-width: 740px) {
+            .Card img {
+                height: 164px;
+            }
+        }
+
+        .CardText {
+            flex-direction: column;
+            padding: calc(var(--fs-15to12PX)*1.3);
+            gap: var(--gab-Cards);
+            margin-bottom: 10px;
+        }
+
+        .CardText h3 {
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        .CardText p {
+            font-size: var(--fs-15to12PX);
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+        }
+
+        .CardText i {
+            display: block;
+            text-align: right;
+            font-size: 20px;
+
+        }
+
+        .Contacts {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .ClickableContact {
+            all: unset;
+            cursor: pointer;
+            color: white;
+            transition: color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth ease-in-out */
+        }
+
+           .ClickableContact:hover {
+            color: var(--Color-Accent);
+        }
+
+        .ContactsTilte {
+            margin-block-start: 64px;
+        }
+
+        .GoogleLink {
+            font-size: var(--fs-Paragraph);
+            font-weight: 200;
+        }
+
+
+        .GoogleLink a {
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1;
+            padding: 0px 4px;
+            text-decoration: none;
+
+        }
+
+        .DetailsandAnchor {
+            /* background-color: green;*/
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .DetailsandAnchor h2 {
+            margin: 0;
+            /* Removes outer spacing */
+            padding: 0;
+            /* Removes inner spacing */
+        }
+
+        .DA {
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .Details {
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .Anchor {
+
+            /*flex: 7;*/
+            max-width: 320px;
+            display: flex;
+            /* Enables Flexbox */
+            align-self: flex-end;
+            justify-content: center;
+            /* Centers horizontally */
+            align-items: flex-end;
+            /* Centers vertically */
+            /* Set a fixed height (adjust as needed) */
+            text-align: center;
+            /* Ensures text alignment (fallback) */
+            /*background-color: red;*/
+        }
+
+
+        .Anchor a {
+            display: block;
+            margin-block-start: 50px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 93%;
+            /* or 58px */
+            text-align: center;
+            background: linear-gradient(180deg, #7E8390 -83.53%, #81878E -68.53%, #8A8891 -53.54%, #909092 -38.45%, #9C9291 -23.56%, #A79694 -8.57%, #B19593 6.43%, #B79990 21.31%, #C6A193 36.41%, #C49D8F 51.42%, #C3978D 66.39%, #BE9388 81.39%, #AC8583 96.38%, #8C7982 111.26%, #79717F 126.15%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+        }
+
+        .AnchorLine1 {
+            font-size: var(--fs-60pxEQ);
+            line-height: 1;
+        }
+
+        .AnchorLine2 {
+            font-size: var(--fs-80pxEQ);
+            line-height: 0.75;
+        }
+
+        .DetailsIcons {
+            max-width: 373px;
+            height: 100%;
+            flex-direction: column;
+            justify-content: start;
+
+        }
+
+        .contact-icon {
+            flex-direction: row;
+        }
+
+        .contact-icon p {
+            font-size: var(--fs-20pxEQ);
+            line-height: 2.5;
+        }
+
+        .contact-icon i {
+            font-size: var(--fs-Button);
+            margin-right: 12px;
+            /* Fallback */
+            margin-right: clamp(8px, 1.5vw, 48px);
+        }
+
+        .ContactClick {
+            all: unset; /* Nuclear option: Removes all inherited/browser styles */
+            cursor: pointer;
+  color: inherit; /* Optional: Force text color to match parent */
+  text-decoration: none; /* Optional: Remove underline */
+  width: fit-content;
+  background-color: red;
+        }
+
+        .Footer {
+            display: flex;
+            /* Enables flexbox */
+            justify-content: center;
+            /* Centers horizontally */
+            align-items: center;
+            /* Centers vertically */
+        }
+
+        .Footer img {
+            max-width: 100%;
+            /* Ensures image doesn't overflow */
+            max-height: 100%;
+            /* Optional: Adjust based on your needs */
+        }
+
+        .Separator {
+            border-top: 10px solid;
+
+
+            border-image-source: var(--Color-StrokeSunset);
+            border-image-slice: 1;
+
+        }
+
+        .SeparatorDown {
+            border-bottom: 10px solid;
+
+
+            border-image-source: var(--Color-StrokeSunset);
+            border-image-slice: 1;
+
+        }
+
+
+
+        .WhiteText {
+            color: var(--Color-white);
+        }
+
+        .fade-div {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0.2;
+            /* Default state */
+        }
+
+        #overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(179.97deg, rgba(69, 72, 102, 0) 13.69%, #454866 55.98%),
+                radial-gradient(123.53% 136.26% at 50.03% 41.4%, rgba(121, 113, 127, 0) 0%, #79717F 64.56%);
+            opacity: 0.5;
+            background-blend-mode: multiply;
+            /* 50% opacity */
+            z-index: 2;
+            transition: opacity 0.1s linear;
+            /* Smoothness */
+        }
+
+        .Scene {
+
+            position: fixed;
+            height: 100vh;
+            /* sticks to viewport */
+            inset: 0;
+            /* top/right/bottom/left = 0 */
+            pointer-events: none;
+            /* let clicks pass through */
+        }
+
+
+        .sea {
+            will-change: opacity;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            /* pin to bottom edge */
+            width: 100%;
+            height: 50vh;
+            /* always half the screen high */
+            transition: opacity 0.1s linear;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .Rotator {
+            position: absolute;
+            width: 100%;
+            transform: rotate(0deg);
+            /* Use degrees (deg) instead of pixels (px) */
+            /* border: 5px solid yellow; */
+            transition: transform 0.1s ease-out;
+            /* Smooth rotation */
+            /* background-color: red; */
+        }
+
+        .fa-circle-chevron-up {
+            font-size: var(--fs-80pxEQ);
+            line-height: 1.1;
+        }
+
+        .AnchorLines {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ArrowMove {
+           
+        }
+
+
+        #sun {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, 0);
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            z-index: -1;
+            /* Behind other content */
+            pointer-events: none;
+
+            /* Makes it not clickable */
+        }
+
+        #gradient {
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, #7E8390 0%, #81878E 7.15%, #8A8891 14.3%, #909092 21.5%, #9C9291 28.6%, #A79694 35.75%, #B19593 42.9%, #B79990 50%, #C6A193 57.2%, #C49D8F 64.36%, #C3978D 71.5%, #BE9388 78.65%, #AC8583 85.8%, #8C7982 92.9%, #79717F 100%);
+            z-index: -4;
+        }
+
+        #SeaPhase1 {}
+                .EyesContainer {
+            position: absolute;
+            /* border: 1px solid green; */
+            width: 100%;
+            height: 100%;
+        }
+                .EyesContainer {
+ position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain; }
+
+        #EyeR {
+            /* border: 1px solid blue; */
+            bottom: 55%;
+            left: 51%;
+            width: 16%;
+            z-index: -1;
+            /* background-color: yellow; */
+        }
+
+        #EyeL {
+            /* border: 1px solid green; */
+            bottom: 53%;
+            left: 28%;
+            width: 16%;
+            z-index: -1;
+        }
+
+
+
+        .eye-img {
+    width: 100%;
+    height: auto;
+}
+
+        #lottie-container {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+        }
+                #lottie-container2 {
+                     opacity: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+        }
+               .HeroIMG:hover #lottie-container2 {
+    opacity: 1;
+}
+
+#lottie-container3 {
+    cursor: pointer;
+    pointer-events: auto;
+     opacity: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain;
+            /* border: green solid 5px; */
+}
+
+ .Character.Character:click #lottie-container3 {
+    display: block; /* Show on hover */
+}
+
+#lottie-mobile-face {
+     position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+}
+
+#lottie-containerBird {
+     position: absolute;
+            width:  100%;
+            left: 0;
+            top: -50%;
+            object-fit: contain;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+        }
+
+        #lottie-containerBird2 {
+             position: absolute;
+            width: 100%;
+            right: 0;
+            top: 0%;
+            min-width: 550px;
+            object-fit: contain;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+            /* border: 5px solid yellow; */
+        }
+                #lottie-container2 {
+                        cursor: pointer;
+    pointer-events: auto;
+                     opacity: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            max-width: 335px;
+            object-fit: contain;
+            /* border: red solid 5px; */
+            /* background-color: rgba(255, 0, 0, 0.5); */
+
+}
