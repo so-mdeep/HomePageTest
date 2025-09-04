@@ -979,3 +979,16 @@
             /* background-color: rgba(255, 0, 0, 0.5); */
 
 }
+
+@media (prefers-color-scheme: dark) {
+
+     .Background {
+            background: var(--GradientSunsetWebkit);
+            /* For Safari fallback */
+            background: var(--GradientSunset);
+            /* For modern browsers */
+
+        }
+
+
+}
