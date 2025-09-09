@@ -1,0 +1,336 @@
+ :root {
+
+            --VidoeSize: clamp(265px,
+                    calc(265px + (625 - 265) * (100vw - 320px) / (750 - 320)),
+                    625px);
+            --LogoSize: calc(var(--VidoeSize)*0.08);
+            --borderRadius: 50px;
+
+            --FontSize38eq: clamp(1.875rem,
+                    /* min: 30px at 320px viewport */
+                    calc(1.875rem + 0.5 * (100vw - 20rem) / 26.875),
+                    /* scales between 30px and 38px */
+                    2.375rem
+                    /* max: 38px at 750px viewport */
+                );
+            --Color-Accent: #d99d7c;
+            --ButtonColor: #b9b9b9;
+            --ButtonSize: 24px;
+        }
+
+        body {
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background:
+                linear-gradient(90deg, rgba(126, 131, 144, 0) -4.44%, rgba(126, 131, 144, 0.75) 10.38%, rgba(126, 131, 144, 0.75) 84.57%, rgba(126, 131, 144, 0) 100%),
+                linear-gradient(180deg, #7E8390 0%, #81878E 7.15%, #8A8891 14.3%, #909092 21.5%, #9C9291 28.6%, #A79694 35.75%, #B19593 42.9%, #B79990 50%, #C6A193 57.2%, #C49D8F 64.36%, #C3978D 71.5%, #BE9388 78.65%, #AC8583 85.8%, #8C7982 92.9%, #79717F 100%);
+
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            /* border: 5px solid blue; */
+            gap: 18px;
+        }
+
+        h1,
+        h2 {
+            margin-block: 0;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: var(--FontSize38eq);
+            line-height: 0.75;
+            text-transform: uppercase;
+            margin-block: 0;
+            margin-block-end: 7.5px;
+
+        }
+
+        h2 {
+            text-transform: uppercase;
+            font-size: clamp(1.25rem,
+                    calc(1.25rem + 0.5 * (100vw - 20rem) / 44),
+                    1.75rem);
+            font-weight: 700;
+            margin-block-end: 5px;
+        }
+
+        div {
+            /* padding: 1px; */
+            /* border: 2.5px solid orange; */
+        }
+
+        p {
+            margin-block: 0;
+            text-align: center;
+            
+        }
+
+        a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    transition: color 0.125s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+        .Part {
+            display: flex;
+             justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .FlexColumn {
+            flex-direction: column;
+        }
+
+        .ButtonContainer {
+            display: block;
+            position: relative;
+            width: fit-content;
+            /* background-color: red; */
+            right: 0;
+            top: 0;
+
+        }
+.ButtonContainer a {
+    color: var(--ButtonColor);
+ }
+
+
+        @media (max-width: 500px) {
+            .ButtonContainer {
+                display: none;
+            }
+        }
+
+
+        .back-button {
+            display: block;
+            font-size: var(--ButtonSize);
+            line-height: 1;
+            color:var(--ButtonColor) ;
+            font-weight: 900;
+            transition: color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth ease-in-out */
+        }
+
+        .back-button:hover {
+            color: var(--Color-Accent) !important; /* Force hover color */
+
+        }
+
+        
+
+        .back-button svg {
+  display: block;
+}
+
+        .CenteredText {
+            text-align: center;
+        }
+
+        .CenteredText p {
+            font-style: normal;
+            font-weight: 300;
+            font-size: var(--FontSize16eq);
+            line-height: 1;
+        }
+
+        @media (max-width: 500px) {
+            .CenteredText p {
+                font-size: 12px
+                    /* 12px below 425px */
+            }
+        }
+
+        .VidoLogos {
+            display: inline-block;
+            position: relative;
+            /* background-color: rgba(255, 0, 0, 0.5); */
+            width: min-content;
+            /* Forces parent to match child width */
+        }
+
+        .VideoDisplay {
+            position: relative;
+        }
+
+        .VideoDisplay video {
+            position: relative;
+            display: block;
+            max-width: var(--VidoeSize);
+            border-radius: var(--borderRadius);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .Logos {
+            position: absolute;
+            top: var(--borderRadius);
+            right: calc(-1*var(--LogoSize)*0.7);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5px;
+            width: fit-content;
+        }
+
+        .Logos img {
+            max-width: var(--LogoSize);
+            border-radius: 12px;
+        }
+
+        .CenteredText {
+            display: flex;
+            display: inline-block;
+        }
+
+        .Padded {
+            display: flex;
+            width: var(--VidoeSize);
+        }
+
+        .gap16 {
+            gap: 16px;
+        }
+        
+
+
+        .FlexVertical {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .FlexHorizontal {
+            display: flex;
+            flex-direction: row;
+            align-self: center;
+            width: 100%;
+            max-width: var(--VidoeSize);
+            justify-content: space-between;
+        }
+
+        .FlexHorizontal p {
+            display: inline-block;
+        }
+
+        .Description p {
+            font-size: 16px;
+            font-weight: 400;
+            text-align: justify;
+
+        }
+
+        @media (max-width: 500px) {
+            .Description p {
+                font-size: 12px
+                    /* 12px below 425px */
+            }
+        }
+
+        .Contacts {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ContactInfo {
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 5px;
+            padding-inline: 7.5px;
+            display: inline-flex; /* or flex */
+    align-items: center; /* vertically center items */
+      transition: color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth ease-in-out */
+            
+        }
+        .ContactInfo:hover {
+            border: 1px solid var(--Color-Accent);
+            color: var(--Color-Accent);
+            
+        }
+
+        .ContactInfo p {
+            white-space: pre                /* 12px below 425px */
+
+        }
+
+        .ContactInfo a {
+            font-size: 16px;
+        }
+
+        @media (max-width: 500px) {
+
+            .ContactInfo {
+                padding: 1px;
+            padding-inline: 5px;
+
+            }
+
+            .ContactInfo p {
+                line-height: 1.5;
+                font-size: 10px;
+            }
+            .ContactInfo i {
+                line-height: 1.25;
+                font-size: 10px
+                    /* 12px below 425px */
+            }
+
+        }
+
+        .GoogleLink:hover {
+            color: var(--Color-Accent);
+
+            transition: color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth ease-in-out */
+
+
+        }
+
+        .End {
+            margin-block-start: 50px;
+            margin-block-end: 25px;
+        }
+
+        .BackHomeMobile {
+            display: none;
+        }
+
+        .BackHomeMobile a {
+            color: var(--ButtonColor);
+        }
+
+        @media (max-width: 500px) {
+            .BackHomeMobile {
+                display: block;
+            }
+        }
+
+        .BackHomeMobile p {
+            display: block;
+            text-align: left;
+            font-size: var(--ButtonSize);
+            line-height: 1;
+        }
+
+        .widthAdaptive {
+            display: block;           /* ensure block-level */
+    max-width: var(--VidoeSize); /* your existing max-width */
+    width: fit-content;       /* shrink to content */
+    margin: 0 auto;           /* center the block itself */
+    text-align: center;       /* optional, center text inside the p */
+            
+        }
+
+        .back-button svg path {
+  fill: var(--ButtonColor) !important; /* Force white by default */
+  transition: fill 0.3s ease;
+}
+.back-button:hover svg path {
+  fill: var(--Color-Accent) !important; /* Force hover color */
+}
