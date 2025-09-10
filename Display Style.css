@@ -52,6 +52,11 @@
             margin-block-end: 7.5px;
 
         }
+ @media (max-width: 425px) {
+    h1 {
+        line-height: 0.9;
+    }
+}
 
         h2 {
             text-transform: uppercase;
@@ -337,3 +342,4 @@
 .back-button:hover svg path {
   fill: var(--Color-Accent) !important; /* Force hover color */
 }
+
