@@ -98,6 +98,7 @@
             /* background-color: red; */
             right: 0;
             top: 0;
+            margin-block-end: 8px;
 
         }
 .ButtonContainer a {
@@ -119,6 +120,7 @@
             color:var(--ButtonColor) ;
             font-weight: 900;
             transition: color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth ease-in-out */
+            
         }
 
         .back-button:hover {
@@ -299,6 +301,7 @@
 
         .BackHomeMobile {
             display: none;
+            margin-block-end: 8px;
         }
 
         .BackHomeMobile a {
